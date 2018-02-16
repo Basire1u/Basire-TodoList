@@ -8,20 +8,31 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
+
+    private ProductListAdapter adapter;
+    private ArrayList<Product> prods;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        String[] tab = {"Un", "Deux", "Trois", "Quatre"};
         ListView lv = (ListView) findViewById(R.id.list_item);
-        ArrayAdapter<String> adapter;
-        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, tab);
+
+        prods = new ArrayList<Product>();
+        prods.add(new Product("Courgette", "légume"));
+        prods.add(new Product("coca", "boisson"));
+        prods.add(new Product("Jambon", "religion"));
+
+
+        adapter = new ProductListAdapter(getApplicationContext(), prods);
         lv.setAdapter(adapter);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
