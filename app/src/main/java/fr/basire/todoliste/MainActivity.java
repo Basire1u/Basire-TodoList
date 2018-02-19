@@ -17,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
 
     private ProductListAdapter adapter;
     private ArrayList<Product> prods;
+    private ArrayList<TodoItem> todoItem;
 
 
     @Override
@@ -26,13 +27,14 @@ public class MainActivity extends AppCompatActivity {
 
         ListView lv = (ListView) findViewById(R.id.list_item);
 
-        prods = new ArrayList<Product>();
+        /*prods = new ArrayList<Product>();
         prods.add(new Product("Courgette", "légume"));
         prods.add(new Product("coca", "boisson"));
-        prods.add(new Product("Jambon", "religion"));
+        prods.add(new Product("Jambon", "religion"));*/
 
-
-        adapter = new ProductListAdapter(getApplicationContext(), prods);
+        todoItem = this.getItems();
+        
+        adapter = new ProductListAdapter(getApplicationContext(), prods); // TODO: 19/02/18  
         lv.setAdapter(adapter);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -68,5 +70,23 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public ArrayList<TodoItem> getItems() {
+        ArrayList<TodoItem> items = new ArrayList<TodoItem>();
+        items.add(new TodoItem(TodoItem.Tags.Important, "Réviser ses cours"));
+        items.add(new TodoItem(TodoItem.Tags.Normal, "Acheter du pain"));
+        items.add(new TodoItem(TodoItem.Tags.Normal, "Marcher 30 mn par jour"));
+        items.add(new TodoItem(TodoItem.Tags.Faible, "Manger 5 fruits et légumes"));
+        items.add(new TodoItem(TodoItem.Tags.Normal, "Prendre des nouvelles des parents"));
+        items.add(new TodoItem(TodoItem.Tags.Faible, "Préparer la prochaine soirée poker"));
+        items.add(new TodoItem(TodoItem.Tags.Normal, "Révoir les premières saisons de Game of thrones"));
+        items.add(new TodoItem(TodoItem.Tags.Faible, "Finir la vaisselle"));
+        items.add(new TodoItem(TodoItem.Tags.Important, "Acheter un nouveau disque dur"));
+        items.add(new TodoItem(TodoItem.Tags.Important, "Revoir les raccourcis clavier"));
+        items.add(new TodoItem(TodoItem.Tags.Normal, "Tester une nouvelle techno"));
+        items.add(new TodoItem(TodoItem.Tags.Faible, "Tester l'application en cours"));
+
+        return items;
     }
 }

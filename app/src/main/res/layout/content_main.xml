@@ -13,16 +13,13 @@
     tools:context="fr.basire.todoliste.MainActivity"
     tools:showIn="@layout/activity_main">
 
-    <TextView
-        android:layout_width="wrap_content"
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler"
+        android:scrollbars="vertical"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
-
-    <ListView
-        android:id="@+id/list_item"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-    </ListView>
+        android:layout_width="wrap_content" />
 
 
-</RelativeLayout>
+
+    </RelativeLayout>

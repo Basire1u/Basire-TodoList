@@ -6,12 +6,16 @@ package fr.basire.todoliste;
 
 public class TodoItem {
 
-    String label;
-    String tag;
-    Boolean realiser;
+    public enum Tags {
+        Faible, Normal, Important
+    }
+
+    private String label;
+    private Tags tag;
+    private Boolean realiser;
 
 
-    public TodoItem(String label, String tag) {
+    public TodoItem(Tags tag, String label) {
         this.label = label;
         this.tag = tag;
     }
@@ -24,12 +28,12 @@ public class TodoItem {
         this.label = label;
     }
 
-    public String getTag() {
+    public Tags getTag() {
         return tag;
     }
 
-    public void setTag(String tag) {
-        this.tag = tag;
+    public void setTag(Tags tags) {
+        this.tag = tags;
     }
 
     public Boolean getRealiser() {
